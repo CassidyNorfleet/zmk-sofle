@@ -94,7 +94,7 @@
         };
     };
 
-keymap {
+    keymap {
         compatible = "zmk,keymap";
 
         layer0 {
@@ -149,3 +149,4 @@ keymap {
             display-name = "3";
         };
     };
+};

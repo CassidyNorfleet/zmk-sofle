@@ -100,10 +100,10 @@
         layer0 {
             bindings = <
 &kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp EQUAL
-&kp ESC     &kp J      &kp N         &kp K         &kp D   &kp V        &kp LEFT   &kp F      &kp W      &kp O      &kp U            &kp SEMI    &kp BSLH
-&kp TAB     &kp S      &kp L         &kp T         &kp G   &kp C        &kp ENTER  &kp R      &kp H      &kp A      &kp E            &kp PIPE    &kp MINUS
+&kp ESC     &kp J      &kp N         &kp K         &kp D   &kp V        &kp DOWN   &kp F      &kp W      &kp O      &kp U            &kp SEMI    &kp BSLH
+&kp TAB     &kp S      &kp L         &kp T         &kp G   &kp C        &kp LEFT   &kp R      &kp H      &kp A      &kp E            &kp I       &kp MINUS
 &kp LCTRL   &kp Y      &kp X         &kp P         &kp B   &kp Q        &kp RIGHT  &kp Z      &kp M      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
-&kp C_MUTE  &kp LALT   &kp LGUI      &kp LSHFT     &lt 2 SPACE &kp ENTER &kp DOWN  &trans     &trans     &trans     &kp RSHFT        &kp DELETE
+&kp C_MUTE  &kp LALT   &kp LGUI      &kp LSHFT     &lt 2 SPACE &kp ENTER &kp ENTER &trans     &key_repeat &lt 1 BSPC &kp RSHFT       &kp DEL     &mo 3
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -113,9 +113,9 @@
         layer_1 {
             bindings = <
 &kp GRAVE   &kp F1     &kp F2        &kp F3        &kp F4  &kp F5       &trans     &kp F6     &kp F7     &kp F8     &kp F9           &kp F10     &kp F11
-&kp Q       &kp Y      &kp HOME      &kp UP        &kp END &kp V        &trans     &kp DEL    &kp N7     &kp N8     &kp N9           &kp PG_UP   &kp F12
-&trans      &kp Z      &kp LEFT      &kp DOWN      &kp RIGHT &kp C      &trans     &kp BSPC   &kp N4     &kp N5     &kp N6           &kp PG_DN   &trans
-&kp LCTRL   &kp S      &kp ENTER     &kp ENTER     &kp F   &kp X        &trans     &kp N0     &kp N1     &kp N2     &kp N3           &trans      &trans
+&kp LG(Z)   &kp LC(Y)  &kp HOME      &kp UP        &kp END &kp LC(V)    &trans     &kp DEL    &kp N7     &kp N8     &kp N9           &kp PG_UP   &kp F12
+&trans      &kp LC(Z)  &kp LEFT      &kp DOWN      &kp RIGHT &kp LC(C)  &trans     &kp BSPC   &kp N4     &kp N5     &kp N6           &kp PG_DN   &trans
+&kp LCTRL   &kp LC(S)  &kp LG(ENTER) &kp LG(LC(ENTER)) &kp LG(F) &kp LC(X) &trans  &kp N0     &kp N1     &kp N2     &kp N3           &trans      &trans
 &kp C_MUTE  &kp LALT   &kp LGUI      &kp LSHFT     &kp SPACE &kp ENTER  &trans     &trans     &trans     &trans     &trans           &trans
             >;
 
@@ -125,10 +125,10 @@
 
         layer_2 {
             bindings = <
-&trans      &kp GRAVE  &kp COMMA     &kp DOT       &kp MINUS &kp BSLH   &trans     &kp N6     &kp LBRC   &kp RBRC   &kp N4           &trans      &trans
-&trans      &trans     &kp N8        &kp FSLH      &kp EQUAL &kp N7     &trans     &kp N3     &kp N9     &kp N0     &kp SEMI         &kp SQT     &trans
-&trans      &kp N1     &trans        &trans        &trans    &trans     &trans     &kp N2     &kp SEMI   &kp SQT    &kp DOT          &kp SQT     &trans
-&trans      &kp GRAVE  &kp EQUAL     &kp LBRC      &kp RBRC  &kp N5     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &kp GRAVE  &kp COMMA     &kp DOT       &kp MINUS &kp BSLH   &trans     &kp CARET  &kp LBRC   &kp RBRC   &kp DLLR         &trans      &trans
+&trans      &trans     &kp ASTRK     &kp FSLH      &kp EQUAL &kp AMPS   &trans     &kp HASH   &kp LPAR   &kp RPAR   &kp SEMI         &kp SQT     &trans
+&trans      &kp EXCL   &trans        &trans        &trans    &trans     &trans     &kp AT     &kp SEMI   &kp SQT    &kp DOT          &kp SQT     &trans
+&trans      &kp GRAVE  &kp EQUAL     &kp LBRC      &kp RBRC  &kp PRCNT  &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &kp C_MUTE  &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
             >;
 
@@ -138,11 +138,11 @@
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &trans   &trans     &trans     &sys_reset &soft_off  &trans     &trans           &trans      &trans
+&bt BT_CLR  &bt BT_CLR_ALL &trans    &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_BRI &trans &trans &trans &trans    &trans     &trans     &trans           &trans      &trans
+&rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_SPD &rgb_ug RGB_BRD &trans &trans &trans &trans   &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;

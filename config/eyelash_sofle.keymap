@@ -66,6 +66,15 @@
             bindings = <&kp DOT>, <&kp DOT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        skq: sticky_key_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
+        };
     };
 
     combos {
@@ -92,6 +101,36 @@
 
             label = "SHIFT_MCLK";
         };
+
+        macro_h: macro_h {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp H &sl 4>;
+        };
+
+        macro_e: macro_e {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp E &sl 5>;
+        };
+
+        macro_r: macro_r {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp R &sl 6>;
+        };
+
+        macro_s: macro_s {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp S &sl 7>;
+        };
+
+        macro_y: macro_y {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp Y &sl 8>;
+        };
     };
 
     keymap {
@@ -101,9 +140,9 @@
             bindings = <
 &kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp EQUAL
 &kp ESC     &kp J      &kp N         &kp K         &kp D   &kp V        &kp DOWN   &kp F      &kp W      &kp O      &kp U            &kp SEMI    &kp BSLH
-&kp TAB     &kp S      &kp L         &kp T         &kp G   &kp C        &kp LEFT   &kp R      &kp H      &kp A      &kp E            &kp I       &kp MINUS
-&kp LCTRL   &kp Y      &kp X         &kp P         &kp B   &kp Q        &kp RIGHT  &kp Z      &kp M      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
-&kp C_MUTE  &kp LALT   &kp LGUI      &kp LSHFT     &lt 2 SPACE &kp ENTER &kp ENTER &trans     &key_repeat &lt 1 BSPC &kp RSHFT       &kp DEL     &mo 3
+&kp TAB     &macro_s   &kp L         &kp T         &kp G   &kp C        &kp LEFT   &macro_r   &macro_h   &kp A      &macro_e         &kp I       &kp MINUS
+&kp LCTRL   &macro_y   &kp X         &kp P         &kp B   &kp Q        &kp RIGHT  &kp Z      &kp M      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
+&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &lt 1 SPACE &lt 2 BSPC &kp ENTER &kp ENTER  &key_repeat &skq RSHIFT &kp DEL        &mo 3       &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -147,6 +186,61 @@
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
             display-name = "3";
+        };
+
+        layer_h {
+            bindings = <
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &kp R     &trans     &trans     &kp G      &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+            >;
+            display-name = "h_swap";
+        };
+
+        layer_e {
+            bindings = <
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &kp Z            &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp U      &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+            >;
+            display-name = "e_swap";
+        };
+
+        layer_r {
+            bindings = <
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp X      &kp Z      &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &kp F         &trans        &trans    &trans     &trans     &kp W      &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+            >;
+            display-name = "r_swap";
+        };
+
+        layer_s {
+            bindings = <
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &kp Z      &trans        &trans        &trans    &trans     &trans     &kp Y      &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+            >;
+            display-name = "s_swap";
+        };
+
+        layer_y {
+            bindings = <
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &kp S         &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+            >;
+            display-name = "y_swap";
         };
     };
 };

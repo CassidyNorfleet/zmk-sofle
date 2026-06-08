@@ -82,7 +82,43 @@
 
         softoff {
             bindings = <&soft_off>;
-            key-positions = <14 28 40>;
+            key-positions = <27 41 44>; 
+        };
+
+        combo_ys {
+            timeout-ms = <50>;
+            key-positions = <14 27>;
+            bindings = <&macro_combo_ys>;
+        };
+
+        combo_sy {
+            timeout-ms = <50>;
+            key-positions = <27 40>;
+            bindings = <&macro_combo_sy>;
+        };
+
+        combo_fr {
+            timeout-ms = <50>;
+            key-positions = <20 33>;
+            bindings = <&macro_combo_fr>;
+        };
+
+        combo_rm {
+            timeout-ms = <50>;
+            key-positions = <33 46>;
+            bindings = <&macro_combo_rm>;
+        };
+
+        combo_oa {
+            timeout-ms = <50>;
+            key-positions = <22 35>;
+            bindings = <&macro_combo_oa>;
+        };
+
+        combo_ue {
+            timeout-ms = <50>;
+            key-positions = <23 36>;
+            bindings = <&macro_combo_ue>;
         };
     };
 
@@ -105,31 +141,61 @@
         macro_h: macro_h {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
             bindings = <&kp H &sl 4>;
-        };
-
-        macro_e: macro_e {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp E &sl 5>;
         };
 
         macro_r: macro_r {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp R &sl 6>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp R &sl 5>;
         };
 
         macro_s: macro_s {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp S &sl 7>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp S &sl 6>;
         };
 
-        macro_y: macro_y {
+        macro_combo_ys: macro_combo_ys {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp Y &sl 8>;
+            bindings = <&kp Y &kp S>;
+        };
+
+        macro_combo_sy: macro_combo_sy {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp S &kp Y>;
+        };
+
+        macro_combo_fr: macro_combo_fr {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp F &kp R>;
+        };
+
+        macro_combo_rm: macro_combo_rm {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp R &kp M>;
+        };
+
+        macro_combo_oa: macro_combo_oa {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp A>;
+        };
+
+        macro_combo_ue: macro_combo_ue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp U &kp E>;
         };
     };
 
@@ -139,9 +205,9 @@
         layer0 {
             bindings = <
 &kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp EQUAL
-&kp ESC     &kp J      &kp N         &kp K         &kp D   &kp V        &kp DOWN   &kp F      &kp W      &kp O      &kp U            &kp SEMI    &kp BSLH
-&kp TAB     &macro_s   &kp L         &kp T         &kp G   &kp C        &kp LEFT   &macro_r   &macro_h   &kp A      &macro_e         &kp I       &kp MINUS
-&kp LCTRL   &macro_y   &kp X         &kp P         &kp B   &kp Q        &kp RIGHT  &kp Z      &kp M      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
+&kp ESC     &kp Y      &kp N         &kp K         &kp D   &kp W        &kp DOWN   &kp F      &kp X      &kp O      &kp U            &kp SEMI    &kp BSLH
+&kp TAB     &macro_s   &kp L         &kp T         &kp G   &kp C        &kp LEFT   &macro_r   &macro_h   &kp A      &kp E            &kp I       &kp MINUS
+&kp LCTRL   &kp J      &kp Z         &kp P         &kp B   &kp Q        &kp RIGHT  &kp M      &kp V      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
 &kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &lt 1 SPACE &lt 2 BSPC &kp ENTER &kp ENTER  &key_repeat &skq RSHIFT &kp DEL        &mo 3       &trans
             >;
 
@@ -199,23 +265,12 @@
             display-name = "h_swap";
         };
 
-        layer_e {
-            bindings = <
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &kp Z            &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp U      &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
-            >;
-            display-name = "e_swap";
-        };
-
         layer_r {
             bindings = <
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp X      &kp Z      &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp Z      &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &kp F         &trans        &trans    &trans     &trans     &kp W      &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &kp F         &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
             >;
             display-name = "r_swap";
@@ -224,23 +279,12 @@
         layer_s {
             bindings = <
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &kp J      &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &kp Z      &trans        &trans        &trans    &trans     &trans     &kp Y      &trans     &trans     &trans           &trans      &trans
+&trans      &kp Y      &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
             >;
             display-name = "s_swap";
-        };
-
-        layer_y {
-            bindings = <
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &kp S         &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
-            >;
-            display-name = "y_swap";
         };
     };
 };

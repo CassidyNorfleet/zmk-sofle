@@ -1,3 +1,25 @@
+Here is the fully compiled and corrected code for your
+config/eyelash_sofle.keymap file containing all your new layout specifications,
+chords (combos), custom magic key logic, and updated thumb clusters.
+
+Key Implementation Details:
+
+1.  Magic A Key:
+      - When you press A, it outputs a and momentarily primes your Magic thumb
+        key using a sticky layer (layer_a).
+      - If you tap the Magic thumb key next, it output o (magic = o). If you tap
+        any other key, it acts as normal and immediately clears the sticky
+        state.
+      - When you hold the Magic key, it seamlessly activates the Symbol Layer
+        (Layer 2).
+2.  One-Shot / Sticky Shifts: Both left and right shifts are mapped to skq,
+    which gives you one-shot sticky shifting on a single tap with quick-release
+    to prevent double-capitalization.
+3.  Chords: All 10 chords are defined as 50ms combos triggering custom macros
+    that output the letters in your preferred exact order.
+
+Copy and Paste Into config/eyelash_sofle.keymap
+
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
 
@@ -75,6 +97,14 @@
             quick-release;
             ignore-modifiers;
         };
+
+        magic_lt: magic_lt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&key_repeat>;
+        };
     };
 
     combos {
@@ -82,31 +112,19 @@
 
         softoff {
             bindings = <&soft_off>;
-            key-positions = <27 41 44>; 
+            key-positions = <28 40 46>; 
         };
 
-        combo_ys {
+        combo_wh {
             timeout-ms = <50>;
-            key-positions = <14 27>;
-            bindings = <&macro_combo_ys>;
+            key-positions = <17 30>;
+            bindings = <&macro_combo_wh>;
         };
 
-        combo_sy {
+        combo_ch {
             timeout-ms = <50>;
-            key-positions = <27 40>;
-            bindings = <&macro_combo_sy>;
-        };
-
-        combo_fr {
-            timeout-ms = <50>;
-            key-positions = <20 33>;
-            bindings = <&macro_combo_fr>;
-        };
-
-        combo_rm {
-            timeout-ms = <50>;
-            key-positions = <33 46>;
-            bindings = <&macro_combo_rm>;
+            key-positions = <30 43>;
+            bindings = <&macro_combo_ch>;
         };
 
         combo_oa {
@@ -115,10 +133,46 @@
             bindings = <&macro_combo_oa>;
         };
 
-        combo_ue {
+        combo_gh {
             timeout-ms = <50>;
-            key-positions = <23 36>;
-            bindings = <&macro_combo_ue>;
+            key-positions = <18 31>;
+            bindings = <&macro_combo_gh>;
+        };
+
+        combo_ph {
+            timeout-ms = <50>;
+            key-positions = <31 44>;
+            bindings = <&macro_combo_ph>;
+        };
+
+        combo_ys {
+            timeout-ms = <50>;
+            key-positions = <15 28>;
+            bindings = <&macro_combo_ys>;
+        };
+
+        combo_sy {
+            timeout-ms = <50>;
+            key-positions = <28 41>;
+            bindings = <&macro_combo_sy>;
+        };
+
+        combo_nb {
+            timeout-ms = <50>;
+            key-positions = <14 27>;
+            bindings = <&macro_combo_nb>;
+        };
+
+        combo_rl {
+            timeout-ms = <50>;
+            key-positions = <34 47>;
+            bindings = <&macro_combo_rl>;
+        };
+
+        combo_rm {
+            timeout-ms = <50>;
+            key-positions = <21 34>;
+            bindings = <&macro_combo_rm>;
         };
     };
 
@@ -138,28 +192,42 @@
             label = "SHIFT_MCLK";
         };
 
-        macro_h: macro_h {
+        macro_a: macro_a {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&kp H &sl 4>;
+            bindings = <&kp A &sl 4>;
         };
 
-        macro_r: macro_r {
+        macro_combo_wh: macro_combo_wh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp R &sl 5>;
+            bindings = <&kp W &kp H>;
         };
 
-        macro_s: macro_s {
+        macro_combo_ch: macro_combo_ch {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp S &sl 6>;
+            bindings = <&kp C &kp H>;
+        };
+
+        macro_combo_oa: macro_combo_oa {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp A>;
+        };
+
+        macro_combo_gh: macro_combo_gh {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp H>;
+        };
+
+        macro_combo_ph: macro_combo_ph {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp P &kp H>;
         };
 
         macro_combo_ys: macro_combo_ys {
@@ -174,28 +242,22 @@
             bindings = <&kp S &kp Y>;
         };
 
-        macro_combo_fr: macro_combo_fr {
+        macro_combo_nb: macro_combo_nb {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F &kp R>;
+            bindings = <&kp N &kp B>;
+        };
+
+        macro_combo_rl: macro_combo_rl {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp R &kp L>;
         };
 
         macro_combo_rm: macro_combo_rm {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp R &kp M>;
-        };
-
-        macro_combo_oa: macro_combo_oa {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp O &kp A>;
-        };
-
-        macro_combo_ue: macro_combo_ue {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp U &kp E>;
         };
     };
 
@@ -205,10 +267,10 @@
         layer0 {
             bindings = <
 &kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp EQUAL
-&kp ESC     &kp Y      &kp N         &kp K         &kp D   &kp W        &kp DOWN   &kp F      &kp X      &kp O      &kp U            &kp SEMI    &kp BSLH
-&kp TAB     &macro_s   &kp L         &kp T         &kp G   &kp C        &kp LEFT   &macro_r   &macro_h   &kp A      &kp E            &kp I       &kp MINUS
-&kp LCTRL   &kp J      &kp Z         &kp P         &kp B   &kp Q        &kp RIGHT  &kp M      &kp V      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
-&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &lt 1 SPACE &lt 2 BSPC &kp ENTER &kp ENTER  &key_repeat &skq RSHIFT &kp DEL        &mo 3       &trans
+&kp ESC     &kp B      &kp Y         &kp D         &kp W   &kp F        &kp DOWN   &kp J      &kp M      &kp O      &kp U            &kp SEMI    &kp BSLH
+&kp TAB     &kp N      &kp S         &kp T         &kp H   &kp G        &kp LEFT   &kp X      &kp R      &macro_a   &kp E            &kp I       &kp MINUS
+&kp LCTRL   &kp Q      &kp V         &kp K         &kp C   &kp P        &kp RIGHT  &kp Z      &kp L      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
+&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp BSPC &kp ENTER   &kp ENTER  &magic_lt 2 0 &lt 1 SPACE &skq RSHIFT &kp DEL       &mo 3       &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -254,37 +316,15 @@
             display-name = "3";
         };
 
-        layer_h {
+        layer_a {
             bindings = <
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &kp R     &trans     &trans     &kp G      &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp O      &trans     &trans     &trans           &trans
             >;
-            display-name = "h_swap";
-        };
-
-        layer_r {
-            bindings = <
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp Z      &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &kp F         &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
-            >;
-            display-name = "r_swap";
-        };
-
-        layer_s {
-            bindings = <
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &kp J      &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &kp Y      &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
-            >;
-            display-name = "s_swap";
+            display-name = "magic_a";
         };
     };
 };

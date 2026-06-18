@@ -249,7 +249,7 @@
 &kp ESC     &kp B      &kp Y         &kp D         &kp W   &kp F        &kp DOWN   &kp J      &kp M      &kp O      &kp U            &kp SEMI    &kp BSLH
 &kp TAB     &kp N      &kp S         &kp T         &kp H   &kp G        &kp LEFT   &kp X      &kp R      &macro_a   &kp E            &kp I       &kp MINUS
 &kp LCTRL   &kp Q      &kp V         &kp K         &kp C   &kp P        &kp RIGHT  &kp Z      &kp L      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
-&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp BSPC &kp ENTER              &kp ENTER  &magic_lt 2 0 &lt 1 SPACE &skq RSHIFT &kp DEL   &mo 3
+&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp SPACE &kp ENTER              &kp ENTER  &magic_lt 2 0 &lt 1 SPACE &kp BSPC &kp DEL   &mo 3
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;

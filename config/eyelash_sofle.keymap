@@ -1,25 +1,3 @@
-Here is the fully compiled and corrected code for your
-config/eyelash_sofle.keymap file containing all your new layout specifications,
-chords (combos), custom magic key logic, and updated thumb clusters.
-
-Key Implementation Details:
-
-1.  Magic A Key:
-      - When you press A, it outputs a and momentarily primes your Magic thumb
-        key using a sticky layer (layer_a).
-      - If you tap the Magic thumb key next, it output o (magic = o). If you tap
-        any other key, it acts as normal and immediately clears the sticky
-        state.
-      - When you hold the Magic key, it seamlessly activates the Symbol Layer
-        (Layer 2).
-2.  One-Shot / Sticky Shifts: Both left and right shifts are mapped to skq,
-    which gives you one-shot sticky shifting on a single tap with quick-release
-    to prevent double-capitalization.
-3.  Chords: All 10 chords are defined as 50ms combos triggering custom macros
-    that output the letters in your preferred exact order.
-
-Copy and Paste Into config/eyelash_sofle.keymap
-
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
 
@@ -170,8 +148,7 @@ Copy and Paste Into config/eyelash_sofle.keymap
         };
 
         combo_rm {
-            timeout-ms = <50>;
-            key-positions = <21 34>;
+            timeout-ms = <21 34>;
             bindings = <&macro_combo_rm>;
         };
     };
@@ -270,7 +247,7 @@ Copy and Paste Into config/eyelash_sofle.keymap
 &kp ESC     &kp B      &kp Y         &kp D         &kp W   &kp F        &kp DOWN   &kp J      &kp M      &kp O      &kp U            &kp SEMI    &kp BSLH
 &kp TAB     &kp N      &kp S         &kp T         &kp H   &kp G        &kp LEFT   &kp X      &kp R      &macro_a   &kp E            &kp I       &kp MINUS
 &kp LCTRL   &kp Q      &kp V         &kp K         &kp C   &kp P        &kp RIGHT  &kp Z      &kp L      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
-&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp BSPC &kp ENTER   &kp ENTER  &magic_lt 2 0 &lt 1 SPACE &skq RSHIFT &kp DEL       &mo 3       &trans
+&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp BSPC &kp ENTER              &magic_lt 2 0 &lt 1 SPACE &skq RSHIFT &kp DEL   &mo 3       &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -283,7 +260,7 @@ Copy and Paste Into config/eyelash_sofle.keymap
 &kp LG(Z)   &kp LC(Y)  &kp HOME      &kp UP        &kp END &kp LC(V)    &trans     &kp DEL    &kp N7     &kp N8     &kp N9           &kp PG_UP   &kp F12
 &trans      &kp LC(Z)  &kp LEFT      &kp DOWN      &kp RIGHT &kp LC(C)  &trans     &kp BSPC   &kp N4     &kp N5     &kp N6           &kp PG_DN   &trans
 &kp LCTRL   &kp LC(S)  &kp LG(ENTER) &kp LG(LC(ENTER)) &kp LG(F) &kp LC(X) &trans  &kp N0     &kp N1     &kp N2     &kp N3           &trans      &trans
-&kp C_MUTE  &kp LALT   &kp LGUI      &kp LSHFT     &kp SPACE &kp ENTER  &trans     &trans     &trans     &trans     &trans           &trans
+&kp C_MUTE  &kp LALT   &kp LGUI      &kp LSHFT     &kp SPACE &kp ENTER             &trans     &trans     &trans     &trans           &trans      &trans
             >;
 
             sensor-bindings = <&scroll_encoder &rsr_trans>;
@@ -296,7 +273,7 @@ Copy and Paste Into config/eyelash_sofle.keymap
 &trans      &trans     &kp ASTRK     &kp FSLH      &kp EQUAL &kp AMPS   &trans     &kp HASH   &kp LPAR   &kp RPAR   &kp SEMI         &kp SQT     &trans
 &trans      &kp EXCL   &trans        &trans        &trans    &trans     &trans     &kp AT     &kp SEMI   &kp SQT    &kp DOT          &kp SQT     &trans
 &trans      &kp GRAVE  &kp EQUAL     &kp LBRC      &kp RBRC  &kp PRCNT  &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&kp C_MUTE  &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+&kp C_MUTE  &trans     &trans        &trans        &trans    &trans                &trans     &trans     &trans     &trans           &trans      &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -309,7 +286,7 @@ Copy and Paste Into config/eyelash_sofle.keymap
 &bt BT_CLR  &bt BT_CLR_ALL &trans    &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_BRI &trans &trans &trans &trans    &trans     &trans     &trans           &trans      &trans
 &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_SPD &rgb_ug RGB_BRD &trans &trans &trans &trans   &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans
+&trans      &trans     &trans        &trans        &trans    &trans                &trans     &trans     &trans     &trans           &trans      &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -322,7 +299,7 @@ Copy and Paste Into config/eyelash_sofle.keymap
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans     &trans     &kp O      &trans     &trans     &trans           &trans
+&trans      &trans     &trans        &trans        &trans    &trans                &kp O      &trans     &trans     &trans           &trans      &trans
             >;
             display-name = "magic_a";
         };

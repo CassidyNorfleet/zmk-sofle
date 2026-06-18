@@ -90,7 +90,7 @@
 
         softoff {
             bindings = <&soft_off>;
-            key-positions = <28 40 46>; 
+            key-positions = <14 28 40>; 
         };
 
         combo_wh {
@@ -248,7 +248,7 @@
 &kp ESC     &kp B      &kp Y         &kp D         &kp W   &kp F        &kp DOWN   &kp J      &kp M      &kp O      &kp U            &kp SEMI    &kp BSLH
 &kp TAB     &kp N      &kp S         &kp T         &kp H   &kp G        &kp LEFT   &kp X      &kp R      &macro_a   &kp E            &kp I       &kp MINUS
 &kp LCTRL   &kp Q      &kp V         &kp K         &kp C   &kp P        &kp RIGHT  &kp Z      &kp L      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
-&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp BSPC &kp ENTER              &magic_lt 2 0 &lt 1 SPACE &skq RSHIFT &kp DEL   &mo 3       &trans
+&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp BSPC &kp ENTER              &kp ENTER  &magic_lt 2 0 &lt 1 SPACE &skq RSHIFT &kp DEL   &mo 3
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -261,7 +261,7 @@
 &trans      &kp GRAVE  &mkp LCLK     &mkp MCLK     &mkp RCLK &mkp MB4   &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
 &trans      &kp TILDE  &trans        &trans        &trans  &mkp MB5     &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans      &rgb_ug RGB_OFF &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_SPI &mmv MOVE_RIGHT &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT &kp F11 &kp F12 &trans
-&kp C_MUTE  &trans     &trans        &trans        &trans  &trans                        &mkp LCLK        &trans           &trans      &trans     &trans            &trans
+&kp C_MUTE  &trans     &trans        &trans        &trans  &trans                        &trans           &trans           &trans      &trans     &trans            &trans
             >;
 
             sensor-bindings = <&scroll_encoder &rsr_trans>;
@@ -274,7 +274,7 @@
 &trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
 &trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans  &trans  &trans      &trans     &kp LBRC     &kp RBRC
 &trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &sys_reset  &soft_off  &bootloader  &trans
-&trans     &trans        &trans          &trans        &trans        &trans                           &mkp LCLK        &trans           &trans      &trans     &trans            &trans
+&trans     &trans        &trans          &trans        &trans        &trans                           &trans  &trans  &trans      &trans     &trans       &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -300,7 +300,7 @@
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
 &trans      &trans     &trans        &trans        &trans    &trans     &trans     &trans     &trans     &trans     &trans           &trans      &trans
-&trans      &trans     &trans        &trans        &trans    &trans                &kp O      &trans     &trans     &trans           &trans      &trans
+&trans      &trans     &trans        &trans        &trans    &trans                &trans     &kp O      &trans     &trans           &trans      &trans
             >;
             display-name = "magic_a";
         };

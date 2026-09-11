@@ -18,7 +18,7 @@
 
 &msc {
     acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
+    time-to-max-speed-ms = <100>;     // 300
     delay-ms = <0>;                   // 0
 };
 
@@ -65,6 +65,28 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp DOT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /* Morph behaviors for Layer 2 dual-symbol keys */
+        morph_plus_ast: morph_plus_ast {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PLUS>, <&kp ASTRK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        morph_minus_slash: morph_minus_slash {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp FSLH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        morph_dqt_sqt: morph_dqt_sqt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DQT>, <&kp SQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -171,14 +193,6 @@
             label = "SHIFT_MCLK";
         };
 
-        macro_a: macro_a {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp A &sl 4>;
-        };
-
         macro_combo_wh: macro_combo_wh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -245,11 +259,11 @@
 
         layer0 {
             bindings = <
-&kp GRAVE   &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp EQUAL
-&kp ESC     &kp B      &kp Y         &kp D         &kp W   &kp F        &kp DOWN   &kp J      &kp M      &kp O      &kp U            &kp SEMI    &kp BSLH
-&kp TAB     &kp N      &kp S         &kp T         &kp H   &kp G        &kp LEFT   &kp X      &kp R      &macro_a   &kp E            &kp I       &kp MINUS
-&kp LCTRL   &kp Q      &kp V         &kp K         &kp C   &kp P        &kp RIGHT  &kp Z      &kp L      &kp SQT    &comma_morph     &dot_morph  &kp FSLH
-&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &kp SPACE &kp ENTER              &kp ENTER  &magic_lt 2 0 &lt 1 SPACE &kp BSPC &kp DEL   &mo 3
+&kp ESC     &kp N1     &kp N2        &kp N3        &kp N4        &kp N5       &kp UP     &kp N6     &kp N7     &kp N8        &kp N9           &kp N0      &kp EQUAL
+&kp GRAVE   &kp B      &kp Y         &kp D         &kp W         &kp F        &kp DOWN   &kp J      &kp M      &kp O         &kp U            &kp SEMI    &kp BSLH
+&kp TAB     &kp N      &kp S         &kp T         &kp H         &kp G        &kp LEFT   &kp X      &kp R      &kp A         &kp E            &kp I       &kp MINUS
+&kp LCTRL   &kp Q      &kp V         &kp K         &kp C         &kp P        &kp RIGHT  &kp Z      &kp L      &kp SQT       &comma_morph     &dot_morph  &kp FSLH
+&kp C_MUTE  &kp LALT   &kp LGUI      &skq LSHIFT   &lt 1 SPACE   &lt 2 ENTER             &kp ENTER  &kp ENTER  &kp BSPC      &skq LSHIFT      &kp DEL     &mo 3
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -258,11 +272,11 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE   &kp F1     &kp F2        &kp F3        &kp F4  &kp F5       &mmv MOVE_UP     &kp F6     &kp F7     &kp F8     &kp F9           &kp F10     &kp F11
-&kp LG(Q)   &kp LC(Y)  &kp HOME      &kp UP        &kp END &kp LC(V)    &mmv MOVE_DOWN   &kp DEL    &kp N7     &kp N8     &kp N9           &kp PG_UP   &kp F12
-&none       &kp LC(Z)  &kp LEFT      &kp DOWN      &kp RIGHT &kp LC(C)  &mmv MOVE_LEFT   &kp SPACE  &kp N4     &kp N5     &kp N6           &kp PG_DN   &none
-&kp LCTRL   &kp LC(S)  &kp LG(ENTER) &kp LC(LG(ENTER)) &kp LC(LG(F)) &kp LC(X) &mmv MOVE_RIGHT &kp N0 &kp N1   &kp N2     &kp N3           &none       &none
-&kp C_MUTE  &trans     &trans        &trans        &trans  &trans                        &trans     &trans     &trans     &trans           &trans      &trans
+&trans      &kp F1     &kp F2        &kp F3             &kp F4        &kp F5       &mmv MOVE_UP     &kp F6       &kp F7     &kp F8     &kp F9           &kp F10     &kp F11
+&kp LG(Q)   &kp LC(Y)  &kp HOME      &kp UP             &kp END       &kp LC(C)    &mmv MOVE_DOWN   &kp RCTRL    &kp N7     &kp N8     &kp N9           &kp PG_UP   &kp F12
+&trans      &kp LC(Z)  &kp LEFT      &kp DOWN           &kp RIGHT     &kp LC(V)    &mmv MOVE_LEFT   &skq RSHIFT  &kp N4     &kp N5     &kp N6           &kp PG_DN   &none
+&trans      &kp LC(S)  &kp LG(ENTER) &kp LC(LG(ENTER))  &kp LC(LG(F)) &kp LC(X)    &mmv MOVE_RIGHT  &kp N0       &kp N1     &kp N2     &kp N3           &kp DOT     &none
+&trans      &trans     &trans        &trans             &trans        &trans                        &trans       &trans     &trans     &trans           &trans      &trans
             >;
 
             sensor-bindings = <&scroll_encoder &rsr_trans>;
@@ -271,11 +285,11 @@
 
         layer_2 {
             bindings = <
-&none       &none      &none         &none         &none      &none        &mmv MOVE_UP     &none      &none      &none      &none      &none       &none
-&none       &kp GRAVE  &kp LT        &kp GT        &kp MINUS  &kp PIPE     &mmv MOVE_DOWN   &kp CARET  &kp LBRC   &kp RBRC   &kp DLLR   &kp RIGHT   &none
-&none       &kp EXCL   &kp ASTRK     &kp FSLH      &kp EQUAL  &kp AMPS     &mmv MOVE_LEFT   &kp HASH   &kp LPAR   &kp RPAR   &kp SEMI   &kp DQT     &none
-&none       &kp TILDE  &kp PLUS      &kp LBKT      &kp RBKT   &kp PRCNT    &mmv MOVE_RIGHT  &kp AT     &kp COLON  &kp COMMA  &kp DOT    &kp SQT     &none
-&trans      &trans     &trans        &trans        &trans     &trans                        &trans     &trans     &trans     &trans     &trans      &trans
+&trans      &none      &kp LBKT      &kp RBKT      &kp DLLR           &none               &mmv MOVE_UP     &none      &none      &none      &none      &none       &none
+&trans      &kp QMARK  &kp LBRC      &kp RBRC      &morph_dqt_sqt     &morph_plus_ast     &mmv MOVE_DOWN   &kp CARET  &kp N7     &kp N8     &kp N9     &none       &none
+&skq LSHIFT &kp EXCL   &kp LPAR      &kp RPAR      &kp SEMI           &kp EQUAL           &mmv MOVE_LEFT   &kp HASH   &kp N4     &kp N5     &kp N6     &kp DOT     &none
+&kp BSPC    &kp COMMA  &kp LT        &kp GT        &kp DOT            &morph_minus_slash  &mmv MOVE_RIGHT  &kp AT     &kp N1     &kp N2     &kp N3     &none       &none
+&trans      &trans     &trans        &trans        &trans             &trans                               &trans     &trans     &kp N0     &trans     &trans      &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
@@ -284,11 +298,11 @@
 
         layer_3 {
             bindings = <
-&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &none    &none      &none      &sys_reset &soft_off  &none      &none            &none       &none
-&bt BT_CLR  &bt BT_CLR_ALL &none     &none         &none     &none      &none      &none      &none      &none      &none            &none       &none
-&rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_BRI &none &none &none  &none      &none      &none      &none            &none       &none
-&ext_power EP_TOG &rgb_ug RGB_EFR &rgb_ug RGB_SPD &rgb_ug RGB_BRD &none &none &none &none     &none      &none      &none            &none       &none
-&trans      &trans     &trans        &trans        &trans    &trans                &trans     &trans     &trans     &trans           &trans      &trans
+&bt BT_SEL 0      &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &none  &none  &none  &sys_reset  &soft_off  &none  &none  &none  &none
+&bt BT_CLR        &bt BT_CLR_ALL   &none            &none            &none  &none  &none  &none       &none      &none  &none  &none  &none
+&rgb_ug RGB_TOG   &rgb_ug RGB_EFF  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &none  &none  &none  &none       &none      &none  &none  &none  &none
+&ext_power EP_TOG &rgb_ug RGB_EFR  &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &none  &none  &none  &none       &none      &none  &none  &none  &none
+&trans            &trans           &trans           &trans           &trans &trans        &trans      &trans     &trans &trans &trans &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
